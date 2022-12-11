@@ -1,57 +1,152 @@
+from datetime import datetime
 from prettytable import PrettyTable
 
 
-class Fridge(object):
+class Aliment:
+    def __init__(self, nom, type_, date_peremption):
+        self.__nom = nom
+        self.__type_ = type_
+        self.__date_peremption = date_peremption
 
-    """Creates food list objects
-    for user to add it manually"""
+    @property
+    def nom(self):
+        return self.__nom
 
-    product_in_fridge = {}
+    @property
+    def type(self):
+        return self.__type_
 
-    def __init__(self, food_name=None):
-        self.food_name = food_name
+    @property
+    def date_peremption(self):
+        return self.__date_peremption
 
-    def add_item(self, product, type_food, exp_date):
-        """Add product to the fridge."""
-        if not product in self.product_in_fridge:
-            self.product_in_fridge[product] = type_food, exp_date
-            print(f'\n{product} added.\n')
+
+class Frigo:
+    def __init__(self):
+        self.__aliment_frigo = {}
+
+    @property
+    def aliment_frigo(self):
+        return self.__aliment_frigo
+
+    def ajouter_aliment(self, aliment):
+        """Ajoute un aliment dans le frigo"""
+
+        if aliment.nom not in self.aliment_frigo:
+            self.__aliment_frigo[aliment.nom] = aliment
+
+    def retirer_aliment(self, aliment):
+        """Retire un aliment du frigo"""
+
+        self.__aliment_frigo.pop(aliment.nom)
+
+    def afficher_contenu(self):
+        mon_tableau = PrettyTable(['Nom', 'Type du produit', 'Date de péremption'])
+        for a in self.__aliment_frigo.values():
+            mon_tableau.add_row((a.nom, a.type, a.date_peremption.strftime('%d/%m/%Y')))
+        print(mon_tableau)
+
+
+class Recette:
+    def __init__(self, nom, description):
+        self.__nom = nom
+        self.__description = description
+
+    @property
+    def nom(self):
+        return self.__nom
+
+    @property
+    def description(self):
+        return self.__description
+
+
+class Etudiant:
+    def __init__(self, prenom, nom, age):
+        self.__prenom = prenom
+        self.__nom = nom
+        self.__age = age
+        self.__allergique_a = []
+
+    @property
+    def prenom(self):
+        return self.__prenom
+
+    @property
+    def nom(self):
+        return self.__nom
+
+    @property
+    def age(self):
+        return self.__age
+
+    @property
+    def allergique_a(self):
+        return self.__allergique_a
+
+    def __eq__(self, other):
+        """Overloading of the == operator for Etudiant"""
+        if isinstance(other, Etudiant):
+            return self.prenom == other.prenom and self.nom == other.nom
         else:
-            print(product + " is already in the fridge.\n")
+            raise TypeError
+
+    def ajouter_allergene(self, allergene):
+        """ajoute un allergène pour un étudiant donné"""
+
+        if allergene not in self.__allergique_a:
+            self.__allergique_a.append(allergene)
+
+    def retirer_allergene(self, allergene):
+        """retire un allergène pour un étudiant donné"""
+
+        for i in self.__allergique_a:
+            if i == allergene:
+                self.__allergique_a.remove(allergene)
 
 
-my_frigo = Fridge("Frigo1")
-myTable = PrettyTable(['Nom', 'Type du produit', 'Date de péremption'])
+class Allergene:
+    def __init__(self, nom):
+        self.__nom = nom
 
-run = True
+    @property
+    def nom(self):
+        return self.__nom
 
-print("Tapez 'stop' à tout moment pour arrêter le programme et afficher la liste des produits")
+    def __eq__(self, other):
+        """Overloading of the == operator for Allergene"""
 
-while run:
-    insert = input("Ajouter le produit\n")
-    if insert == 'stop':
-        break
-    insert_type = input("Ajouter le type du produit\n")
-    if insert_type == 'stop':
-        break
-    insert_exp_date = input("Ajouter la date de péremption en format dd/mm/yyyy \n")
-    if insert_exp_date == 'stop':
-        break
-    if len(insert_exp_date) != 10:
-        insert_exp_date = input("Veuillez introduire la date dans le format dd/mm/yyyy \n")
-    
-
-    my_frigo.add_item(insert, insert_type, insert_exp_date)
+        if isinstance(other, Allergene):
+            return self.nom == other.nom
+        else:
+            raise TypeError
 
 
-food_list = list(my_frigo.product_in_fridge.items())
+class Repas:
+    def __init__(self, date_repas, type_repas):
+        self.__date_repas = date_repas
+        self.__type_repas = type_repas
+        self.__participants = []
 
-for product in food_list:
-    myTable.add_row((product[0], product[1][0], product[1][1]))
+    @property
+    def date_repas(self):
+        return self.__date_repas
 
-print(myTable)
+    @property
+    def type_repas(self):
+        return self.__type_repas
 
-if len(my_frigo.product_in_fridge) == 0:
-    print('Votre frigo est vide')
+    @property
+    def participants(self):
+        return self.__participants
 
-print(input('\nPress ENTER to exit'))
+    def ajouter_participant(self, participant):
+        """ajoute un allergène pour un étudiant donné"""
+
+        if participant not in self.__participants:
+            self.__participants.append(participant)
+
+    def retirer_participant(self, participant):
+        """retire un allergène pour un étudiant donné"""
+
+        self.__participants.remove(participant)
