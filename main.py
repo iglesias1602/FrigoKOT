@@ -1,7 +1,3 @@
-from datetime import datetime
-from prettytable import PrettyTable
-
-
 class Aliment:
     def __init__(self, nom, type_, date_peremption):
         self.__nom = nom
