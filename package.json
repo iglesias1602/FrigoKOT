@@ -1,0 +1,55 @@
+{
+  "recipes": [
+    {
+      "name": "Omelette aux oignons",
+      "ingredients": [
+        "2 oeufs",
+        "1 oignon coupé en rondelles",
+        "huile d'olive",
+        "sel et poivre"
+      ],
+      "instructions": [
+        "Chauffer un peu d'huile d'olive dans une poêle à feu moyen.",
+        "Ajouter les rondelles d'oignon et les faire cuire jusqu'à ce qu'elles soient tendres.",
+        "Cassser les oeufs dans la poêle et les battre légèrement avec une fourchette.",
+        "Assaisonner avec du sel et du poivre.",
+        "Cuire l'omelette jusqu'à ce qu'elle soit bien dorée, puis la retourner et cuire l'autre côté jusqu'à ce qu'elle soit bien dorée également.",
+        "Servir chaud."
+      ]
+    },
+    {
+      "name": "Pâtes au beurre et aux champignons",
+      "ingredients": [
+        "200g de pâtes",
+        "100g de champignons de votre choix, coupés en tranches",
+        "50g de beurre",
+        "2 cuillères à soupe de persil haché",
+        "sel et poivre"
+      ],
+      "instructions": [
+        "Faire cuire les pâtes selon les instructions du paquet.",
+        "Dans une poêle, faire fondre le beurre à feu moyen.",
+        "Ajouter les champignons et les faire cuire jusqu'à ce qu'ils soient tendres.",
+        "Ajouter les pâtes cuites et égouttées à la poêle avec les champignons et le beurre.",
+        "Ajouter le persil haché et mélanger.",
+        "Assaisonner avec du sel et du poivre au goût.",
+        "Servir chaud."
+      ]
+    },
+    {
+      "name": "Salade de tomates et mozzarella",
+      "ingredients": [
+        "200g de tomates coupées en quartiers",
+        "200g de mozzarella coupée en tranches",
+        "1 cuillère à soupe d'huile d'olive",
+        "1 cuillère à soupe de vinaigre balsamique",
+        "quelques feuilles de basilic frais",
+        "sel et poivre"
+      ],
+      "instructions": [
+        "Dans un bol, mélanger l'huile d'olive et le vinaigre balsamique.",
+        "Ajouter les tomates et la mozzarella dans le bol et mélanger pour bien enrober les ingrédients "
+      ]
+    }
+    ]
+}
